@@ -1,0 +1,59 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "SaGa Frontier"
+id = "SCUS-94230"
+players = 1
+exe = "disc/SCUS_942.30"
+disc = "disc/SaGa Frontier (USA).cue"
+discs = ["disc/SaGa Frontier (USA).cue"]
+disc_serials = ["SCUS-94230"]
+load_address = "0x80020000"
+entry_pc = "0x8003BD34"
+text_size = "0x00075800"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "SaGa Frontier (USA).bin"
+cue_name = "SaGa Frontier (USA).cue"
+boot_exe = "SCUS_942.30"
+known_sizes = [722635536]
+known_md5 = [
+  "95f57b8f33470e6763c0a947b9e1a13f",
+]
+known_sha1 = [
+  "f222b57ecb22afe6ac1820d66ae5f6750e3e9b4e",
+]
+known_crc32 = [
+  "907455ad",
+]
+
+[recompiler]
+bios_config = "psxrecomp/bios/SCPH1001.toml"
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+strict = true
+
+[runtime]
+openbios = false
+bios_hle = false
+window_title = "SaGa Frontier Recompiled"
+memcard_dir = "saves"
+overlay_cache = true
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 1
+required_disc_fp = "afdb274373e94b02491cd9b9f30cec0041c55f08ba90db395559d99d55c65945"
